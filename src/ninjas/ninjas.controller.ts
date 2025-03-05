@@ -9,8 +9,8 @@ import {
   Query,
 } from '@nestjs/common';
 import { NinjasService } from './ninjas.service';
-import { CreateNinjaDto } from './dto/create-ninja.dto';
-import { UpdateNinjaDto } from './dto/update-ninja.dto';
+// import { CreateNinjaDto } from './dto/create-ninja.dto';
+// import { UpdateNinjaDto } from './dto/update-ninja.dto';
 
 @Controller('ninjas')
 export class NinjasController {
@@ -23,8 +23,8 @@ export class NinjasController {
 
   @Get()
   getNinjas(@Query('weapon') weapon: 'stars' | 'nunchuks') {
-    const service = new NinjasService();
-    return service.getNinjas(weapon);
+    // const service = new NinjasService();
+    return this.ninjasService.getNinjas(weapon);
   }
 
   // @Get(':id')
