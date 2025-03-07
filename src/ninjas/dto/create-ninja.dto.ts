@@ -1,1 +1,4 @@
-export class CreateNinjaDto {}
+export class CreateNinjaDto {
+  name: string;
+  weapon: 'stars' | 'nunchuks';
+}
