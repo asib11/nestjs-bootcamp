@@ -1,4 +1,4 @@
-export class CreateUserDto {
+export class CreateNinjaDto {
   name: string;
   weapon: 'stars' | 'nunchuks';
 }
