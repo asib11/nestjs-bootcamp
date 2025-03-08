@@ -7,6 +7,7 @@ import {
   Delete,
   Query,
   Put,
+  NotFoundException,
 } from '@nestjs/common';
 import { NinjasService } from './ninjas.service';
 import { CreateNinjaDto } from './dto/create-ninja.dto';
@@ -22,9 +23,13 @@ export class NinjasController {
   }
 
   @Get()
-  getNinjas(@Query('weapon') weapon: 'stars' | 'nunchuks') {
+  getOneNinjas(@Query('weapon') weapon: 'stars' | 'nunchuks') {
     // const service = new NinjasService();
-    return this.ninjasService.getNinjas(weapon);
+    try {
+      return this.ninjasService.getNinjas(weapon);
+    } catch (err) {
+      throw new NotFoundException(err);
+    }
   }
 
   @Get(':id')
