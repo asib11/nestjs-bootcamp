@@ -8,16 +8,19 @@ import {
   Query,
   Put,
   NotFoundException,
+  UseGuards,
 } from '@nestjs/common';
 import { NinjasService } from './ninjas.service';
 import { CreateNinjaDto } from './dto/create-ninja.dto';
 import { UpdateNinjaDto } from './dto/update-ninja.dto';
+import { BeltGuard } from 'src/belt/belt.guard';
 
 @Controller('ninjas')
 export class NinjasController {
   constructor(private readonly ninjasService: NinjasService) {}
 
   @Post()
+  @UseGuards(BeltGuard)
   creatNinjas(@Body() createNinjaDto: CreateNinjaDto) {
     return this.ninjasService.creatNinjas(createNinjaDto);
   }
